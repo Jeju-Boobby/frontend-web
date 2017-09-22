@@ -26,15 +26,18 @@ function changeBg(event) {
   beforeTarget = event.currentTarget;
 }
 
+var j = 0;
 for (var i = 0; i < divs.length; i++) {
-  if (i % 2 == 0 && parseInt(i / 4) % 2 == 0) {
+
+  if (j % 2 == 0) {
     divs[i].style.backgroundColor = 'black';
-  } else if (i % 2 == 1 && parseInt(i / 4) % 2 == 0) {
-    divs[i].style.backgroundColor = 'white';
-  } else if (i % 2 == 0 && parseInt(i / 4) % 2 == 1) {
-    divs[i].style.backgroundColor = 'white';
   } else {
-    divs[i].style.backgroundColor = 'black';
+    divs[i].style.backgroundColor = 'white';
   }
+
+  if (i % 4 == 3) {
+    j++;
+  }
+  j++;
   divs[i].addEventListener('click', changeBg);
 }
