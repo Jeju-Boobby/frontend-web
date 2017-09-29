@@ -16,18 +16,20 @@ var todayPhoto = [
     var wrap = document.getElementById('wrap');
 
     var str = '';
-    str += '<img src="'+todayPhoto[1].img+'"> ';
-    str += '<img src="'+todayPhoto[2].img+'"> ';
-    str += '<img src="'+todayPhoto[3].img+'"> ';
+    var nowPage = 1;
+    var photoNumInOnePage = 3
+    var totalPage = Math.ceil(todayPhoto.length / photoNumInOnePage);
+
+    for (var i = (nowPage * photoNumInOnePage) - 2; i <= nowPage * photoNumInOnePage && i < todayPhoto.length; i++) {
+      str += '<img src="'+todayPhoto[i].img+'"> ';
+    }
 
     str += '<div class="bottom">';
     str += '<span class="before"><</span>';
-    str += '<p class="page"><b class="now">1</b> / 10</p>';
+    str += '<p class="page"><b class="now">' + nowPage +'</b> / ' + totalPage +'</p>';
     str += '<span class="next">></span>';
     str += '</div>';
 
     wrap.innerHTML = str;
-
-
 
 // span DOM에 클릭 이벤트 할당
