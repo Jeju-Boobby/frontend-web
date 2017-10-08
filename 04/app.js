@@ -13,23 +13,54 @@ var todayPhoto = [
         ,{"url":"http://sports.media.daum.net/general/gallery/STARKIMYUNA/index.html","img":"http://icon.daumcdn.net/w/c/12/05/81727815537682839.jpeg","title":"&#39;교생&#39; 김연아, 스승의날에도 인기폭발","id":"20120516092003892"}
     ];
 
-    var wrap = document.getElementById('wrap');
+var wrap = document.getElementById('wrap');
 
-    var str = '';
-    var nowPage = 1;
-    var photoNumInOnePage = 3
-    var totalPage = Math.ceil(todayPhoto.length / photoNumInOnePage);
 
-    for (var i = (nowPage * photoNumInOnePage) - 2; i <= nowPage * photoNumInOnePage && i < todayPhoto.length; i++) {
-      str += '<img src="'+todayPhoto[i].img+'"> ';
-    }
+var nowPage = 1;
+var photoNumInOnePage = 3
+var totalPage = Math.ceil(todayPhoto.length / photoNumInOnePage);
 
-    str += '<div class="bottom">';
-    str += '<span class="before"><</span>';
-    str += '<p class="page"><b class="now">' + nowPage +'</b> / ' + totalPage +'</p>';
-    str += '<span class="next">></span>';
-    str += '</div>';
+var nowDom = document.getElementById('now');
 
-    wrap.innerHTML = str;
+var totalPageDom = document.getElementById('totalPage');
+totalPageDom.innerHTML = totalPage;
+
+function showImage() {
+  var str = '';
+
+  for (var i = (nowPage * photoNumInOnePage) - 2; i <= nowPage * photoNumInOnePage && i < todayPhoto.length; i++) {
+    str += '<img src="'+todayPhoto[i].img+'"> ';
+  }
+  wrap.innerHTML = str;
+  nowDom.innerHTML = nowPage;
+}
+
 
 // span DOM에 클릭 이벤트 할당
+function beforePage(event) {
+  if (nowPage == 1) {
+    nowPage = totalPage;
+  } else {
+    nowPage--;
+  }
+console.log("beforePage");
+  showImage();
+}
+
+function nextPage(event) {
+  if (nowPage == totalPage) {
+    nowPage = 1;
+  } else {
+    nowPage++;
+  }
+console.log("nextPage");
+  showImage();
+}
+
+var beforeBtn = document.getElementById('before');
+beforeBtn.addEventListener('click', beforePage);
+
+var nextBtn = document.getElementById('next');
+nextBtn.addEventListener('click', nextPage);
+
+showImage();

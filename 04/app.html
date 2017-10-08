@@ -6,16 +6,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style media="screen">
-    div#wrap {
+    div#content {
       width: 350px;
       text-align: center;
     }
+    div#wrap {
+      width: 100%;
 
-    div.bottom {
-      text-align: center;
     }
 
-    #wrap span {
+    div#bottom {
+      width: 100%;
+    }
+
+    span#before {
       display: inline-block;
       width: 25px;
       height: 25px;
@@ -23,7 +27,7 @@
       text-align: center;
     }
 
-    span.next {
+    span#next {
       display: inline-block;
       width: 25px;
       height: 25px;
@@ -31,26 +35,34 @@
       text-align: center;
     }
 
-    p.page {
+    p#page {
       display: inline;
       color: #999;
     }
 
-    .page b.now {
+    p#now {
+      display: inline;
       color: #000;
+    }
+
+    p#totalPage {
+      display: inline;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <div id="wrap">
-    <!-- <img src="http://icon.daumcdn.net/w/c/12/05/82877085750988319.jpeg" alt=""/>
-    <img src="http://icon.daumcdn.net/w/c/12/05/82876693901189319.jpeg" alt=""/>
-    <img src="http://icon.daumcdn.net/w/c/12/05/82876307459008319.jpeg" alt=""/> -->
-    <!-- <div class="bottom">
-      <span class="before"><</span>
-      <p class="page"><b class="now">1</b> / 10</p>
-      <span class="next">></span>
-    </div> -->
+  <div id="content">
+    <div id="wrap">
+      <!-- <img src="http://icon.daumcdn.net/w/c/12/05/82877085750988319.jpeg" alt=""/>
+      <img src="http://icon.daumcdn.net/w/c/12/05/82876693901189319.jpeg" alt=""/>
+      <img src="http://icon.daumcdn.net/w/c/12/05/82876307459008319.jpeg" alt=""/> -->
+    </div>
+    <div id="bottom">
+      <span id="before"><</span>
+      <p id="page"><p id="now">1</p> / <p id="totalPage">10</p></p>
+      <span id="next">></span>
+    </div>
   </div>
 
   <script src="app.js"></script>
