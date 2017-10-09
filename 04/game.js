@@ -6,11 +6,20 @@ var max_missDom = document.getElementById('max-miss');
 
 var mainDom = document.getElementById('main');
 
-// 초기화
-var score = 0;
-var level = 1;
-var missed = 0;
-var max_miss = 11;
+var score;
+var level;
+var missed;
+var max_miss;
+
+function newGame() {
+  score = 0;
+  level = 1;
+  missed = 0;
+  max_miss = 11;
+
+  updateScoreBoard();
+  showRectangle();
+}
 
 function updateScoreBoard() {
   scoreDom.innerHTML = score;
@@ -19,8 +28,6 @@ function updateScoreBoard() {
   max_missDom.innerHTML = max_miss;
 }
 
-console.log(document.body.scrollWidth);
-console.log(document.body.scrollHeight);
 var rectangleDom;
 
 function showRectangle() {
@@ -31,19 +38,66 @@ function showRectangle() {
 
   var leftRandom = Math.floor(Math.random() * left);
   var topRandom = Math.floor(Math.random() * top) + 115;
-  console.log(leftRandom);
-  console.log(topRandom);
+
   rectangleDom = document.getElementById('rectangle');
-  console.log(rectangleDom);
+
   rectangleDom.style.left = leftRandom + "px";
   rectangleDom.style.top = topRandom + "px";
+
+  rectangleDom.addEventListener('click', rectangleClick);
 }
 
-updateScoreBoard();
-showRectangle();
+function rectangleClick(event) {
+  score++;
+  level = Math.ceil(score / 10);
+  missed = -1;  // bodyClick 도 같이 돌아버려서 -1로 해줌.. 해결방안 물어보자
+  max_miss = 11 - level;
 
-// rectangle이 클릭됬을 때 실행할 함수
+  updateScoreBoard();
 
-// rectangle이 아닌 main이 클릭 됬을 때 실행할 함수
+  if (score >= 101) {
+    var isNewGame = confirm('게임을 클리어 하셨습니다! 게임을 새로 시작할까요?');
 
-// rectangle, main에 clickListener 붙이기
+    if (isNewGame) {
+      newGame();
+
+      return;
+    } else {
+      endGame();
+
+      return;
+    }
+  }
+
+  showRectangle();
+}
+
+function endGame() {
+  mainDom.innerHTML = '<h1 style="text-align: center;">Game End</h1>';
+}
+
+function bodyClick(event) {
+  missed++;
+
+  updateScoreBoard();
+
+  if (missed >= max_miss) {
+    var isNewGame = confirm('GAME OVER!!! 게임을 새로 시작할까요?');
+
+    if (isNewGame) {
+      newGame();
+
+      return;
+    } else {
+      endGame();
+
+      return;
+    }
+  }
+
+  showRectangle();
+}
+
+document.body.addEventListener('click', bodyClick);
+
+newGame();
