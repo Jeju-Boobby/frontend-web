@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style media="screen">
+  header{
+    width: 100%;
+    text-align: center;
+  }
+
+  h2 span {
+    color: red;
+  }
+
+  hr {
+    width: 100%;
+  }
+
+  main span#rectangle {
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+  }
+
+  main span#rectangle:active {
+    background-color: blue;
+  }
+</style>
+<body>
+  <header>
+    <h2>Score: <span id="score">999</span></h2>
+    <h2>Level: <span id="level">999</span></h2>
+    <h2>Miss: <span id="missed">1</span> / <span id="max-miss">90</span></h2>
+  </header>
+  <hr>
+  <main id="main">
+    <span id="rectangle"></span>
+  </main>
+</body>
+</html>
