@@ -7,7 +7,51 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>1boon</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <style>.list{margin:10px; padding:10px}</style>
+    <style>
+    #list{margin:10px;}
+    .item {
+      display: inline-block;
+      width: 49%;
+      padding: 10px;
+      text-align: center;
+      border: 2px solid #f5f6f7;
+    }
+    .item h3 {
+      display: inline-block;
+      width: 73%;
+      font-weight: bold;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .item h5 {
+      display: inline-block;
+      text-align: right;
+      width: 25%;
+    }
+    .item .imageWrapper {
+      width: 100%;
+      height: 300px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .item img {
+      position: relative;
+      min-height: 100%;
+      width: 100%;
+    }
+    .item:hover .imageWrapper {
+      opacity: 0.3;
+      color: black;
+    }
+    span.spin {
+      -webkit-animation:spin 0.5s linear infinite;
+      animation:spin 0.5s linear infinite;
+    }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -15,30 +59,38 @@
     <div>
         <ul class="nav nav-tabs">
             <!-- 선택된탭:선택된 탭에 .active    -->
-            <li class="menu active" id="trending"><a href="#">트렌딩</a></li>
-            <li class="menu" id="issue"><a href="#">이슈</a></li>
-            <li class="menu" id="enter"><a href="#">엔터</a></li>
+            <li class="active" id="trending"><a href="#trending">트렌딩</a></li>
+            <li id="issue"><a href="#issue">이슈</a></li>
+            <li id="enter"><a href="#enter">엔터</a></li>
         </ul>
     </div>
 
     <div id="list">
-
-        여기서 각 리스트 뿌려주기 <br><br>
-
-        http://1boon.kakao.com/ch/trending.json <br>
-        http://1boon.kakao.com/ch/issue.json <br>
-        http://1boon.kakao.com/ch/enter.json <br>
-
+        <!-- <a href="http://1boon.kakao.com/bloter/292703" class="item">
+          <h3 class="title">로지텍, ‘카카오 마우스’ 출시</h3>
+          <h5 class="totalView">조회수: 241</h5>
+          <div class="imageWrapper">
+            <img src="http://t1.daumcdn.net/liveboard/bloter/40fa7daf85f949228721bba2c3050aea.jpg" alt=""/>
+          </div>
+        </a>
+        <a href="http://1boon.kakao.com/bloter/292703" class="item">
+          <h3 class="title">로지텍, ‘카카오 마우스’</h3>
+          <h5 class="totalView">조회수: 241</h5>
+          <div class="imageWrapper">
+            <img src="http://t1.daumcdn.net/liveboard/bloter/40fa7daf85f949228721bba2c3050aea.jpg" alt=""/>
+          </div>
+        </a> -->
         <!-- 로딩마크업: 로딩중일때만 표시 -->
-        <div class="text-center">
-            <span class="glyphicon glyphicon-refresh"></span> 로딩중
-        </div>
+        <!-- <div class="text-center">
+            <span class="glyphicon glyphicon-refresh spin"></span> 로딩중
+        </div> -->
     </div>
 
     <div class="text-center">
-        <button type="button" class="btn btn-default">더보기</button>
+        <button type="button" class="btn btn-default" id="more">더보기</button>
     </div>
 </div>
+<script src="jsonp.js"></script>
 <script src="1boon.js"></script>
 </body>
 </html>
