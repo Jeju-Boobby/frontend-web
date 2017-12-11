@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <title>Todos</title>
+  <link rel="stylesheet" href="todos.css">
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Todo List</h1>
+
+    <form class="new-task" id="new-task">
+      <input type="text" name="text" placeholder="할일을 입력하세요">
+    </form>
+  </header>
+  <ul id="todos">
+    <li>
+      <button class="delete">×</button>
+      <input type="checkbox" class="toggle-checked">
+      <span class="text">JS공부하기</span>
+    </li>
+  </ul>
+</div>
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="todos.js"></script>
+</body>
+</html>
